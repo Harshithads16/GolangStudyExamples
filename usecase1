@@ -1,0 +1,55 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	var tmap = make(map[string][]string)
+
+	tmap["SR"] = []string{"7750", "7250", "7450", "7950"}
+	tmap["SAR"] = []string{"7705", "7705hm", "7705hmc"}
+	
+	fmt.Println("MAPS")
+	for k, v := range tmap {
+		fmt.Println(k, v)
+	}
+
+	element, ok := tmap["SR"]
+
+	fmt.Println("Searching for the given element in this array ", element, ok)
+
+	var p bool = false
+	for i := range element {
+		if element[i] == "7750" {
+			p = true
+			fmt.Println("yes")
+		}
+	}
+
+	if !p {
+		sl := append(element, "7777")
+		fmt.Println(sl)
+		tmap["SR"] = sl
+		fmt.Println("After appending:", tmap)
+	}
+
+	element1, _ := tmap["SR"]
+
+	for j := range element1 {
+		if element1[j] == "7750" {
+			//delete(element[j], "7250")
+			test := element1
+			for z := j; z < (len(element1) - 1); z++ {
+				test[z] = test[z+1]
+
+			}
+		}
+	}
+
+	afterDelete := element1[:(len(element1) - 1)]
+
+	tmap["SR"] = afterDelete
+	fmt.Println("After deleting a node", tmap)
+}
