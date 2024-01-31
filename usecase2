@@ -1,0 +1,30 @@
+package main
+ 
+import "fmt"
+ 
+type NSPTeamEvent struct {
+ date string
+ name string
+ contact int
+ OrganizingTeam
+}
+ 
+type OrganizingTeam struct {
+    names []string
+    contact int
+}
+ 
+func main() {
+    nspevent := NSPTeamEvent{
+        date : "31-jan-2024",
+        name : "harshitha",
+        contact : 99999,
+        OrganizingTeam: OrganizingTeam{
+            names :[]string{"reels","hunt"},
+            contact: 7777,
+        },
+    }
+    fmt.Println(nspevent.date , nspevent.name ,nspevent.OrganizingTeam.contact, nspevent.OrganizingTeam.names)
+ 
+    fmt.Println(nspevent.date , nspevent.name ,nspevent.OrganizingTeam)
+}
